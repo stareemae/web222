@@ -122,20 +122,34 @@ function generateRowHTML(video) {
 
 // @TODO: Put your code here
 
+const upload = document.getElementByTagName('upload');
+
 function validateForm(){
-  if(document.upload.title.value == ""){
+  let title = document.forms["upload"]["title"];
+  let desc = document.forms["upload"]["desc"];
+  let desc = document.forms["upload"]["date"];
+  if(title.value == ""){
     alert("Please fill out this field.");
-    document.upload.title.focus();
+    title.focus();
     return false;
   }
-  if(document.upload.desc.value == ""){
+  if(desc.value == ""){
     alert("Please fill out this field.");
-    document.upload.desc.focus();
+    desc.focus();
     return false;
   }
-  if(document.upload.date.value == ""){
+  if(date.value == ""){
     alert("Please choose a date.");
-    document.upload.date.focus();
+    date.focus();
+    return false;
+  }
+  return(true);
+}
+
+function validateSearch(){
+  if(txt-search.value == ""){
+    window.alert("Please enter a keyword")
+    txt-search.focus();
     return false;
   }
   return(true);
