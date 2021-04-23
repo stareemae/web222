@@ -3,25 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css"/>
 </head>
-<body>  
-    <header>
-        <a href="upload.html" id="btn-upload" class="btn" style="position:fixed; bottom:20px; right:20px;"> 
-            + Upload Video
-        </a>  
-        <button id="btn-show-all" class="btn" style="position:fixed; bottom:80px; right:20px;" onclick="showAll()"> 
-            Show All Videos
-        </button>  
-        <img src="assets/logo.png">   <br>
-        <input id="txt-search" type="text" placeholder="Enter a keyword" value="">
-        <button id="btn-search" class="btn" onclick="validateSearch()">Search</button>
-    </header>
-    
-    <div id="results">
-    </div>
+<body>
     <script src="app.js"></script>
+    <header> 
+        <a href="index.html" class="btn" style="position:fixed; bottom:20px; right:20px;"> 
+            < Go Back
+        </a>         
+        <img src="assets/logo.png">   <br>
+        <h1> Upload Your Video </h1>            
+    </header>
+
+    <div class="container">
+            <!-- @TODO: Put your code here -->
+            <form name = "uploadForm" action="https://formspree.io/f/mnqlnrqe" method="POST">
+                <label for="title">Title of Video</label>
+                <input type="text" name="title" id="title" placeholder="Title of video" required minlength="1">
+                <label for="desc">Description of Video</label>
+                <input type="text" name="desc" id="desc" placeholder="Describe the video here." required minlength="1">
+                <label for="date">Date to Publish Video</label>
+                <input type="date" name="date" id="date" min="2021-04-22" max="2022-04-22" required minlength="10">
+                <label for="date">Video Thumbnail Photo</label>
+                <input type="file" id="thumbnail" name="thumbnail" accept="image/png, image/jpeg"> 
+                <button class="btn btn-secondary" type="submit">Submit</button> 
+            </form>
+    </div>
 </body>
 </html>
