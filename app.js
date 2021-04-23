@@ -122,35 +122,52 @@ function generateRowHTML(video) {
 
 // @TODO: Put your code here
 
-const upload = document.getElementByTagName('upload');
 
-function validateForm(){
-  let title = document.forms["upload"]["title"];
-  let desc = document.forms["upload"]["desc"];
-  let desc = document.forms["upload"]["date"];
-  if(title.value == ""){
-    alert("Please fill out this field.");
-    title.focus();
-    return false;
+function validateSearch() {
+  let resultSpace = document.getElementById("results");
+  let searchText = document.getElementById("txt-search");
+
+  resultSpace.innerHTML = '';
+
+  keyword = searchText.value;
+  searchText.value = '';
+
+  if (!keyword) {
+    
+    alert("Please enter a keyword.");
+
   }
-  if(desc.value == ""){
-    alert("Please fill out this field.");
-    desc.focus();
-    return false;
+  else {
+    let matchCount = 0;
+
+    for (i =0; i<videosList.length; i++) {
+      const description = videosList[i]['description'].toLowerCase();
+      if (description.includes(keyword.toLowerCase())) {
+        matchCount += 1;
+        resultSpace.innerHTML += (generateRowHTML(videosList[i]));
+      }
+    }
+
+
+    if (matchCount == 0) {
+      resultSpace.innerHTML += `
+        <p>No videos found with the keyword ${keyword}</p>
+      `
+    }
+
   }
-  if(date.value == ""){
-    alert("Please choose a date.");
-    date.focus();
-    return false;
-  }
-  return(true);
+
 }
 
-function validateSearch(){
-  if(txt-search.value == ""){
-    window.alert("Please enter a keyword")
-    txt-search.focus();
-    return false;
+function showAll() {
+  let resultSpace = document.getElementById("results");
+  let searchText = document.getElementById("txt-search");
+
+  resultSpace.innerHTML = '';
+  searchText.value = '';
+
+  for (i =0; i<videosList.length; i++) {
+    resultSpace.innerHTML += (generateRowHTML(videosList[i]));
   }
-  return(true);
+
 }
